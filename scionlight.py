@@ -48,9 +48,9 @@ class ScionLight(torch.optim.Optimizer):
 		(2048, 2048) -> spectral lmo in square 2048 matrix
 		(3, 2048, 2048) -> 3xbatched lmo of square 2048 matrix
 
-		Sample usage with modded-nanogpt
+		Sample usage with modded-nanogpt, tested on 1.5B model
 		rho for scalars and embed likely suboptimal
-		embed can use colnorm but it may be broken
+		embed can use colnorm scaling type but it may be broken
 		optimizers = [ScionLight(lr=0.0024, alpha=0.1, newton_steps=5, params=[
 		    {'name': 'hidden_matrix', 'params': hidden_matrix_params,    'lmo_type': 'spectral', 'scaling_type': 'hidden',   'rho': 50.0},
 		    {'name': 'embed',   'params': embed_params,            'lmo_type': 'sign',  'scaling_type': 'embed',    'rho': 50.0},
