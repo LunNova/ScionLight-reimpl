@@ -57,6 +57,8 @@ class ScionLight(torch.optim.Optimizer):
 		    {'name': 'head',    'params': head_params,             'lmo_type': 'sign',     'scaling_type': 'head',     'rho': 3000.0},
 		    {'name': 'scalars', 'params': scalar_params,           'lmo_type': 'sign',     'scaling_type': 'embed',    'rho': 5.0},
 		])]
+		print(f"ScionLight step sizes: {optimizers[0].get_lambdas()}")
+
 		Make sure not to zero grads between steps! This optimizer accumulates momentum in grads.
 		"""
 		defaults = dict(lr=lr, alpha=alpha, newton_steps=newton_steps)
